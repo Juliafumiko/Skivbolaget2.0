@@ -3,17 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "v10.16.3"
+  },
   "scripts": {
-    "start": "nodemon index.js & node-sass scss -o public --w",
+    "start": "node index.js & node-sass scss -o public --w",
     "test": "unittest && cy:run",
     "unittest": "mocha",
     "cypress": "cypress open",
     "cy:run": "cypress run -- --reco -- \"cypress/integration/todoUIspec.js\""
   },
-  "author": "",
+  "author": "julia",
   "license": "ISC",
   "dependencies": {
     "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "mocha": "^7.0.1",
