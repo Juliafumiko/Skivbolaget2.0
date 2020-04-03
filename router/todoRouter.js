@@ -2,7 +2,7 @@ const express = require("express");
 const todo = require("../model/todo");
 const router = express.Router();
 
-router.route("/todo")
+router.route("/")
 .get(async(req,res)=>{
         const sorted = req.query.sort ||1;
         const todos = await todo.find().sort({text :sorted})
@@ -21,7 +21,7 @@ router.route("/todo")
             res.send(error._message)
         }
         else{
-            res.redirect("/todo")
+            res.redirect("/")
             next();
         }
     })
@@ -32,7 +32,7 @@ router.route("/delete/:id")
 .get(async(req,res,next)=>{
     console.log(req.params.id);
     await todo.deleteOne({_id:req.params.id});
-    res.redirect("/todo")
+    res.redirect("/")
     next();
 
 })
@@ -48,7 +48,7 @@ router.route("/update/:id")
 .post(async(req,res,next)=>{
     await todo.updateOne({_id:req.body._id},
         {$set: {text: req.body.text}},{runValidators:true},(err)=>{
-            err? res.send(err.message): res.redirect("/todo")
+            err? res.send(err.message): res.redirect("/")
            next();
         })
         console.log(req.body);
