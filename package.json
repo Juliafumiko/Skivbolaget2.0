@@ -7,7 +7,7 @@
     "node": "v10.16.3"
   },
   "scripts": {
-    "start": "node index.js & node-sass scss -o public --w",
+    "start": "node index.js",
     "test": "unittest && cy:run",
     "unittest": "mocha",
     "cypress": "cypress open",
